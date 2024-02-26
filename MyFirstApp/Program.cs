@@ -23,6 +23,15 @@ app.MapGet("/html", (HttpContext context) =>
     return "<h1>It is Henry<h1>";
 });
 
+app.MapGet("/user", (HttpContext context) =>
+{
+    context.Response.Headers["Content-Type"] = "text/html";
+    if (context.Request.Query.ContainsKey("id"))
+        return "<h1>Thanks for Entering the ID<h1>";
+    else
+        return "<h1>No ID Was Found >:(<h1>";
+});
+
 /*app.Run(async (HttpContext context) =>
 {
     string[] paths = new string[5] { "/", "/method", "/userAgent", "/html"};
